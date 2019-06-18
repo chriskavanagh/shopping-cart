@@ -1,33 +1,50 @@
-.App {
+.carth1 {
+  margin-bottom: 6rem;
+  margin-top: 3rem;
+  text-align: center;
+  border: 5px solid rgb(241, 237, 237);
+  padding: 1rem;
+  color: rgb(126, 82, 82);
+  border-radius: 5%;
+}
+
+.cartitems {
+  margin-left: 10rem;
+  padding-left: 1rem;
+}
+
+.table {
+  background: rgb(241, 237, 237);
+}
+
+.card .cardBody {
+  background: rgb(241, 237, 237);
+}
+
+.total {
+  font-weight: 600;
+}
+
+.card span {
+  color: red;
+}
+
+span.taxSpan {
+  margin-right: 10px;
+}
+
+.shippingText {
+  margin-bottom: 4rem;
+  margin-top: 10rem;
+  text-align: center;
+  color: #007bff;
+  font-size: 1.5rem;
+}
+
+.card h4 {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icon {
+  margin-left: 7px;
 }

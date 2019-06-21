@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-import { Table, Button } from "reactstrap";
+import Select from "./Select";
 import GroceryList from "../models/ProductModel";
+import { Button, Table } from "reactstrap";
 
 class GroceryItems extends Component {
+  state = {
+    item: {}
+  };
+  options = [1, 2, 3, 4, 5];
+
   render() {
+    const { handleChange } = this.props;
     const { addToCart } = this.props;
     return (
       <div>
@@ -12,6 +19,7 @@ class GroceryItems extends Component {
             <tr>
               <th>Add Item</th>
               <th>Name</th>
+              <th>Quantity</th>
               <th>Price</th>
             </tr>
           </thead>
@@ -22,12 +30,15 @@ class GroceryItems extends Component {
                   <Button
                     outline
                     color="primary"
-                    onClick={() => addToCart(item)}
+                    onClick={e => addToCart(item)}
                   >
                     Add
                   </Button>
                 </td>
                 <td>{item.name}</td>
+                <td>
+                  <Select options={this.options} handleChange={handleChange} />
+                </td>
                 <td>{item.price}</td>
               </tr>
             ))}

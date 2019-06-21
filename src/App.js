@@ -4,6 +4,7 @@ import GroceryItems from "./components/GroceryItems";
 import { Container, Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import ScrollButton from "./components/ScrollButton";
 import "./App.css";
 
 class App extends Component {
@@ -66,6 +67,7 @@ class App extends Component {
               <Cart items={cart} />
             </Col>
           </Row>
+          <ScrollButton />
         </Container>
       </Fragment>
     );

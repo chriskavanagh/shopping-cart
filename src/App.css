@@ -66,3 +66,27 @@ span.subtotalSpan {
   font: Arial, sans-serif;
   z-index: 10000;
 }
+
+.scroll {
+  opacity: 0.3;
+  background-color: aqua;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.arrow-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -9px;
+  margin-left: -5px;
+}
+
+.arrow-up glyphicon glyphicon-chevron-up {
+  color: red;
+}

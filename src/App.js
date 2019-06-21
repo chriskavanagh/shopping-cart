@@ -20,6 +20,22 @@ class App extends Component {
 
   addItem = item => {
     let clone = [...this.state.cart];
+
+    let existingItem = clone.filter(i => i.id === item.id);
+    console.log(existingItem);
+    if (existingItem.length > 0) {
+      existingItem[0].quantity++;
+      this.setState({ cart: clone });
+    } else {
+      let quantity = this.state.quantity;
+      item.quantity = quantity;
+      let cart = [...this.state.cart, item];
+      this.setState({ cart });
+    }
+  };
+
+  /* addItem = item => {
+    let clone = [...this.state.cart];
     let index = clone.indexOf(item);
 
     if (index !== -1) {
@@ -34,7 +50,7 @@ class App extends Component {
       });
     }
     this.setState({ quantity: 1 });
-  };
+  }; */
 
   render() {
     const { cart } = this.state;
@@ -67,7 +83,7 @@ class App extends Component {
               <Cart items={cart} />
             </Col>
           </Row>
-          <ScrollButton />
+          <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
         </Container>
       </Fragment>
     );

@@ -18,7 +18,7 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
-  addItem = item => {
+  /* addItem = item => {
     let clone = [...this.state.cart];
 
     let existingItem = clone.filter(i => i.id === item.id);
@@ -32,9 +32,9 @@ class App extends Component {
       let cart = [...this.state.cart, item];
       this.setState({ cart });
     }
-  };
+  }; */
 
-  /* addItem = item => {
+  addItem = item => {
     let clone = [...this.state.cart];
     let index = clone.indexOf(item);
 
@@ -50,7 +50,7 @@ class App extends Component {
       });
     }
     this.setState({ quantity: 1 });
-  }; */
+  };
 
   render() {
     const { cart } = this.state;

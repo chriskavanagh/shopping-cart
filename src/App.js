@@ -43,7 +43,7 @@ class App extends Component {
   numberCartItems = () => {
     const { cart } = this.state;
     let quantity = cart.map(item => item.quantity);
-    console.log(parseInt(quantity));
+    parseInt(quantity);
     return quantity.reduce((total, item) => {
       return parseInt(total) + parseInt(item);
     }, 0);

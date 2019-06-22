@@ -5,6 +5,8 @@ import { Container, Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import ScrollButton from "./components/ScrollButton";
+import FooterPage from "./components/Footer";
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import "./App.css";
 
 class App extends Component {
@@ -17,22 +19,6 @@ class App extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
-
-  /* addItem = item => {
-    let clone = [...this.state.cart];
-
-    let existingItem = clone.filter(i => i.id === item.id);
-    console.log(existingItem);
-    if (existingItem.length > 0) {
-      existingItem[0].quantity++;
-      this.setState({ cart: clone });
-    } else {
-      let quantity = this.state.quantity;
-      item.quantity = quantity;
-      let cart = [...this.state.cart, item];
-      this.setState({ cart });
-    }
-  }; */
 
   addItem = item => {
     let clone = [...this.state.cart];
@@ -52,26 +38,43 @@ class App extends Component {
     this.setState({ quantity: 1 });
   };
 
+  /* addItem = item => {
+    let clone = [...this.state.cart];
+
+    let existingItem = clone.filter(i => i.id === item.id);
+    console.log(existingItem);
+    if (existingItem.length > 0) {
+      existingItem[0].quantity++;
+      this.setState({ cart: clone });
+    } else {
+      let quantity = this.state.quantity;
+      item.quantity = quantity;
+      let cart = [...this.state.cart, item];
+      this.setState({ cart });
+    }
+    this.setState({ quantity: 1 });
+  }; */
+
   render() {
     const { cart } = this.state;
     return (
       <Fragment>
         <h1 className="carth1">
           My
-          <span className="fa-stack fa-2x">
+          <span>
             <FontAwesomeIcon
               icon={faCartPlus}
-              transform="shrink-5 down-3 left-3"
+              transform="shrink-5 down-3 "
               color="#007bff"
-              size="1x"
+              size="2x"
               className="icon"
-              style={{ marginLeft: "7px" }}
+              style={{ marginBottom: "7px" }}
             />
             <strong className="fa-stack-1x">{cart.length}</strong>
+            Cart
           </span>
-          Cart
         </h1>
-        <Container>
+        <MDBContainer>
           <Row>
             <Col xs="5">
               <GroceryItems
@@ -84,7 +87,8 @@ class App extends Component {
             </Col>
           </Row>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
-        </Container>
+        </MDBContainer>
+        <FooterPage />
       </Fragment>
     );
   }

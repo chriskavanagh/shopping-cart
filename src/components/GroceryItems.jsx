@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Select from "./Select";
 import GroceryList from "../models/ProductModel";
-import { Button, Table } from "reactstrap";
+import { Table } from "reactstrap";
+import { MDBBtn } from "mdbreact";
 
 class GroceryItems extends Component {
   state = {
@@ -27,13 +28,15 @@ class GroceryItems extends Component {
             {GroceryList.map((item, index) => (
               <tr key={index}>
                 <td>
-                  <Button
+                  <MDBBtn
                     outline
                     color="primary"
+                    size="sm"
                     onClick={e => addToCart(item)}
                   >
+                    {" "}
                     Add
-                  </Button>
+                  </MDBBtn>
                 </td>
                 <td>{item.name}</td>
                 <td>

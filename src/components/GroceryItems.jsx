@@ -3,12 +3,11 @@ import Select from "./Select";
 import GroceryList from "../models/ProductModel";
 import { Table } from "reactstrap";
 import { MDBBtn } from "mdbreact";
+import range from "lodash/range";
 
 class GroceryItems extends Component {
-  state = {
-    item: {}
-  };
-  options = [1, 2, 3, 4, 5];
+  //options = [1, 2, 3, 4, 5];
+  options = range(1, 6);
 
   render() {
     const { handleChange } = this.props;

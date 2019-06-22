@@ -8,7 +8,7 @@ class Cart extends Component {
   // base price/ sum of all items in cart
   getTotal = () => {
     return this.props.items.reduce((total, item) => {
-      return total + item.price;
+      return total + item.price * item.quantity;
     }, 0);
   };
 

@@ -7,6 +7,8 @@ import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import ScrollButton from "./components/ScrollButton";
 import FooterPage from "./components/Footer";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import NavbarPage from "./components/NavBar";
+import GroceryList from "./models/ProductModel";
 import "./App.css";
 
 class App extends Component {
@@ -38,6 +40,15 @@ class App extends Component {
     this.setState({ quantity: 1 });
   };
 
+  numberCartItems = () => {
+    const { cart } = this.state;
+    let quantity = cart.map(item => item.quantity);
+    console.log(parseInt(quantity));
+    return quantity.reduce((total, item) => {
+      return parseInt(total) + parseInt(item);
+    }, 0);
+  };
+
   /* addItem = item => {
     let clone = [...this.state.cart];
 
@@ -59,6 +70,7 @@ class App extends Component {
     const { cart } = this.state;
     return (
       <Fragment>
+        <NavbarPage items={GroceryList} />
         <h1 className="carth1">
           My
           <span>
@@ -70,7 +82,7 @@ class App extends Component {
               className="icon"
               style={{ marginBottom: "7px" }}
             />
-            <strong className="fa-stack-1x">{cart.length}</strong>
+            <strong className="fa-stack-1x">{this.numberCartItems()}</strong>
             Cart
           </span>
         </h1>

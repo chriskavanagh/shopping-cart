@@ -6,8 +6,8 @@ import { MDBBtn } from "mdbreact";
 import range from "lodash/range";
 
 class GroceryItems extends Component {
-  //options = [1, 2, 3, 4, 5];
-  options = range(1, 6);
+  options = [1, 2, 3, 4, 5];
+  //options = range(1, 6);
 
   render() {
     const { handleChange } = this.props;

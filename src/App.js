@@ -42,12 +42,19 @@ class App extends Component {
 
   numberCartItems = () => {
     const { cart } = this.state;
+    return cart.reduce((total, item) => {
+      return parseInt(total) + parseInt(item.quantity);
+    }, 0);
+  };
+
+  /* numberCartItems = () => {
+    const { cart } = this.state;
     let quantity = cart.map(item => item.quantity);
     parseInt(quantity);
     return quantity.reduce((total, item) => {
       return parseInt(total) + parseInt(item);
     }, 0);
-  };
+  }; */
 
   /* addItem = item => {
     let clone = [...this.state.cart];

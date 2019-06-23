@@ -47,32 +47,6 @@ class App extends Component {
     }, 0);
   };
 
-  /* numberCartItems = () => {
-    const { cart } = this.state;
-    let quantity = cart.map(item => item.quantity);
-    parseInt(quantity);
-    return quantity.reduce((total, item) => {
-      return parseInt(total) + parseInt(item);
-    }, 0);
-  }; */
-
-  /* addItem = item => {
-    let clone = [...this.state.cart];
-
-    let existingItem = clone.filter(i => i.id === item.id);
-    console.log(existingItem);
-    if (existingItem.length > 0) {
-      existingItem[0].quantity++;
-      this.setState({ cart: clone });
-    } else {
-      let quantity = this.state.quantity;
-      item.quantity = quantity;
-      let cart = [...this.state.cart, item];
-      this.setState({ cart });
-    }
-    this.setState({ quantity: 1 });
-  }; */
-
   render() {
     const { cart } = this.state;
     return (
@@ -114,3 +88,29 @@ class App extends Component {
 }
 
 export default App;
+
+/* numberCartItems = () => {
+    const { cart } = this.state;
+    let quantity = cart.map(item => item.quantity);
+    parseInt(quantity);
+    return quantity.reduce((total, item) => {
+      return parseInt(total) + parseInt(item);
+    }, 0);
+  }; */
+
+/* addItem = item => {
+    let clone = [...this.state.cart];
+
+    let existingItem = clone.filter(i => i.id === item.id);
+    console.log(existingItem);
+    if (existingItem.length > 0) {
+      existingItem[0].quantity++;
+      this.setState({ cart: clone });
+    } else {
+      let quantity = this.state.quantity;
+      item.quantity = quantity;
+      let cart = [...this.state.cart, item];
+      this.setState({ cart });
+    }
+    this.setState({ quantity: 1 });
+  }; */

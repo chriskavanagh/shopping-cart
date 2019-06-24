@@ -16,6 +16,7 @@ export default {
       clone[index].quantity =
         parseInt(clone[index].quantity) + parseInt(state.quantity);
       state.items = [...clone];
+      state.quantity = 1;
     } else {
       item.quantity = state.quantity;
       state.items = [...state.items, item];

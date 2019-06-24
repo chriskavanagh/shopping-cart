@@ -13,7 +13,8 @@ export default {
     let clone = [...state.items];
     let index = clone.findIndex(i => i.id === item.id);
     if (index !== -1) {
-      clone[index].quantity = clone[index].quantity + parseInt(state.quantity);
+      clone[index].quantity =
+        parseInt(clone[index].quantity) + parseInt(state.quantity);
       state.items = [...clone];
     } else {
       item.quantity = state.quantity;

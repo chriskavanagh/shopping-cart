@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import ScrollButton from "./components/ScrollButton";
 import FooterPage from "./components/Footer";
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+//import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import NavbarPage from "./components/NavBar";
 import GroceryList from "./models/ProductModel";
 import "./App.css";
@@ -14,7 +14,8 @@ import "./App.css";
 class App extends Component {
   state = {
     cart: [],
-    quantity: 1
+    quantity: 1,
+    cartQuantity: 0
   };
 
   handleChange = e => {
@@ -67,7 +68,7 @@ class App extends Component {
             Cart
           </span>
         </h1>
-        <MDBContainer>
+        <Container>
           <Row>
             <Col xs="5">
               <GroceryItems
@@ -76,11 +77,11 @@ class App extends Component {
               />
             </Col>
             <Col xs="4" className="cartitems">
-              <Cart items={cart} />
+              <Cart />
             </Col>
           </Row>
           <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
-        </MDBContainer>
+        </Container>
         <FooterPage />
       </Fragment>
     );

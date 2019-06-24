@@ -1,14 +1,21 @@
-import React from "react";
-import { FormGroup, Label, Input } from "reactstrap";
+import React, { useState, useEffect } from "react";
+import { FormGroup, Input } from "reactstrap";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 const Select = props => {
+  const [quantity, setQuantity] = useState(1);
+  const add = useStoreActions(actions => actions.CartModel.addQuantity);
+
+  useEffect(() => {
+    add(quantity);
+  });
   return (
     <FormGroup>
       <Input
         type="select"
         name="quantity"
         id="quantity"
-        onChange={props.handleChange}
+        onChange={e => setQuantity(e.target.value)}
       >
         {props.options.map(option => {
           return (

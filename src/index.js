@@ -8,17 +8,23 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import * as serviceWorker from "./serviceWorker";
 import { StoreProvider, createStore } from "easy-peasy";
+import ProductModel from "./models/ProductModel";
+import CartModel from "./models/CartModel";
 
-//const store = createStore(root);
+const root = {
+  ProductModel,
+  CartModel
+};
+const store = createStore(root);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+//ReactDOM.render(<App />, document.getElementById("root"));
 
-/* ReactDOM.render(
-    <StoreProvider store={store}>
-      <App />
-    </StoreProvider>,
-    document.getElementById("root")
-  ); */
+ReactDOM.render(
+  <StoreProvider store={store}>
+    <App />
+  </StoreProvider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

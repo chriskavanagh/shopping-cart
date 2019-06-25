@@ -12,7 +12,8 @@ export default {
   }),
   addfilteredList: action((state, list) => {
     state.filteredList = list;
-    // state.items = list ?????????
+    if (state.filteredList.length === 0) state.filteredList = [];
+    else state.filteredList = list;
   }),
   add: action((state, item) => {
     let clone = [...state.items];

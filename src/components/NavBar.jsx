@@ -64,7 +64,7 @@ const NavbarPage = ({ items }) => {
                   aria-label="Search"
                   value={searchQuery}
                   onChange={handleChange}
-                  onKeyDown={handleSearch}
+                  onKeyUp={handleSearch}
                 />
               </div>
             </MDBFormInline>

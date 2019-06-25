@@ -8,7 +8,6 @@ export default {
   //actions
   addQuantity: action((state, quantity) => {
     state.quantity = quantity;
-    //console.log(`State-Quantity:${state.quantity}`);
   }),
   addfilteredList: action((state, list) => {
     state.filteredList = list;

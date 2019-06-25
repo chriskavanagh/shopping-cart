@@ -10,11 +10,15 @@ const GroceryItems = props => {
   const groceries = useStoreState(state => state.ProductModel.GroceryList);
   const filteredList = useStoreState(state => state.CartModel.filteredList);
 
+  // options for Select Component, number of choices to buy.
   const options = range(1, 6);
 
-  //const { handleChange } = props;
-  //const { addToCart } = props;
+  // get add function from CartModel State (easy-peasy).
   const add = useStoreActions(actions => actions.CartModel.add);
+
+  // if search, filters the list, otherwise list all products.
+  const groceryList = filteredList.length > 0 ? filteredList : groceries;
+
   return (
     <div>
       <Table className="table">
@@ -27,7 +31,7 @@ const GroceryItems = props => {
           </tr>
         </thead>
         <tbody>
-          {groceries.map((item, index) => (
+          {groceryList.map((item, index) => (
             <tr key={index}>
               <td>
                 <MDBBtn

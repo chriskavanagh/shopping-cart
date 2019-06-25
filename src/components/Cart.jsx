@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 //import { Row, Col, Button } from "reactstrap";
 import { Card, CardText, CardBody, CardTitle } from "reactstrap";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,6 @@ import { Card, CardText, CardBody, CardTitle } from "reactstrap";
 import { useStoreState } from "easy-peasy";
 
 const Cart = () => {
-  const [quantity, setquantity] = useState("");
   const items = useStoreState(state => state.CartModel.items);
   // base price/ sum of all items in cart
   const getTotal = () => {

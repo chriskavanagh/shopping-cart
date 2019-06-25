@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import { useStoreActions } from "easy-peasy";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -9,60 +10,69 @@ import {
   MDBFormInline
 } from "mdbreact";
 
-class NavbarPage extends Component {
-  state = {
-    isOpen: false,
-    searchQuery: "",
-    filtered: []
+const NavbarPage = ({ items }) => {
+  const { GroceryList } = items;
+  const [isOpen, setisOpen] = useState(false);
+  const [searchQuery, setsearchQuery] = useState("");
+  const [filtered, setfiltered] = useState([]);
+
+  const addFilter = useStoreActions(
+    actions => actions.CartModel.addfilteredList
+  );
+
+  const toggleCollapse = () => {
+    //this.setState({ isOpen: !state.isOpen });
+    setisOpen(!isOpen);
   };
 
-  toggleCollapse = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
-
-  handleChange = e => {
+  const handleChange = e => {
     const { value } = e.target;
-    this.setState({ searchQuery: value });
+    //this.setState({ searchQuery: value });
+    setsearchQuery(value);
   };
 
-  handleSearch = () => {
-    const { searchQuery } = this.state;
-    let filtered = this.props.items.filter(i =>
-      i.name.toLowerCase().startsWith(searchQuery.toLowerCase())
-    );
-    this.setState({ filtered: filtered });
+  const handleSearch = () => {
+    //const { searchQuery } = this.state;
+    const filtered = GroceryList.filter(i => {
+      return i.name.toLowerCase().startsWith(searchQuery.toLowerCase());
+    });
+
+    setfiltered(filtered);
   };
 
-  render() {
-    return (
-      <MDBNavbar color="indigo" dark expand="md">
-        <MDBNavbarBrand>
-          <strong className="white-text">Navbar</strong>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav left />
-          <MDBNavbarNav right>
-            <MDBNavItem>
-              <MDBFormInline waves>
-                <div className="md-form my-0">
-                  <input
-                    className="form-control mr-sm-2"
-                    type="text"
-                    placeholder="Search"
-                    aria-label="Search"
-                    value={this.state.searchQuery}
-                    onChange={this.handleChange}
-                    onKeyDown={this.handleSearch}
-                  />
-                </div>
-              </MDBFormInline>
-            </MDBNavItem>
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
-    );
-  }
-}
+  useEffect(() => {
+    addFilter(filtered);
+    //console.log(filtered);
+  });
+
+  return (
+    <MDBNavbar color="indigo" dark expand="md">
+      <MDBNavbarBrand>
+        <strong className="white-text">Navbar</strong>
+      </MDBNavbarBrand>
+      <MDBNavbarToggler onClick={toggleCollapse} />
+      <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
+        <MDBNavbarNav left />
+        <MDBNavbarNav right>
+          <MDBNavItem>
+            <MDBFormInline waves>
+              <div className="md-form my-0">
+                <input
+                  className="form-control mr-sm-2"
+                  type="text"
+                  placeholder="Search"
+                  aria-label="Search"
+                  value={searchQuery}
+                  onChange={handleChange}
+                  onKeyDown={handleSearch}
+                />
+              </div>
+            </MDBFormInline>
+          </MDBNavItem>
+        </MDBNavbarNav>
+      </MDBCollapse>
+    </MDBNavbar>
+  );
+};
 
 export default NavbarPage;

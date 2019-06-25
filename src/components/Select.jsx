@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FormGroup, Input } from "reactstrap";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreActions } from "easy-peasy";
 
 const Select = props => {
   const [quantity, setQuantity] = useState(1);

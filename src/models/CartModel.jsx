@@ -4,10 +4,14 @@ export default {
   // cart products
   items: [],
   quantity: 0,
+  filteredList: [],
   //actions
   addQuantity: action((state, quantity) => {
     state.quantity = quantity;
     //console.log(`State-Quantity:${state.quantity}`);
+  }),
+  addfilteredList: action((state, list) => {
+    state.filteredList = list;
   }),
   add: action((state, item) => {
     let clone = [...state.items];
@@ -20,6 +24,7 @@ export default {
     } else {
       item.quantity = state.quantity;
       state.items = [...state.items, item];
+      state.quantity = 1;
     }
   })
 };

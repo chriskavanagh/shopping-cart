@@ -18,7 +18,7 @@ class App extends Component {
     cartQuantity: 0
   };
 
-  handleChange = e => {
+  /* handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
@@ -39,7 +39,7 @@ class App extends Component {
       });
     }
     this.setState({ quantity: 1 });
-  };
+  }; */
 
   numberCartItems = () => {
     const { cart } = this.state;
@@ -49,7 +49,6 @@ class App extends Component {
   };
 
   render() {
-    const { cart } = this.state;
     return (
       <Fragment>
         <NavbarPage items={GroceryList} />

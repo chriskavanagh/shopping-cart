@@ -8,6 +8,7 @@ import { useStoreState, useStoreActions } from "easy-peasy";
 
 const GroceryItems = props => {
   const groceries = useStoreState(state => state.ProductModel.GroceryList);
+  const filteredList = useStoreState(state => state.CartModel.filteredList);
 
   const options = range(1, 6);
 

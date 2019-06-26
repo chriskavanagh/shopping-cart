@@ -5,7 +5,8 @@ export default {
   items: [],
   quantity: 0,
   filteredList: [],
-  //actions
+  cartCount: 0,
+  // . . . ACTIONS . . .
   addQuantity: action((state, quantity) => {
     state.quantity = quantity;
   }),
@@ -14,7 +15,7 @@ export default {
     if (state.filteredList.length === 0) state.filteredList = [];
     else state.filteredList = list;
   }),
-  add: action((state, item) => {
+  addItem: action((state, item) => {
     let clone = [...state.items];
     let index = clone.findIndex(i => i.id === item.id);
     if (index !== -1) {

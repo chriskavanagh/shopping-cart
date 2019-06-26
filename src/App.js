@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Cart from "./components/Cart";
 import GroceryItems from "./components/GroceryItems";
 import { Container, Row, Col } from "reactstrap";
@@ -9,16 +9,67 @@ import FooterPage from "./components/Footer";
 //import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import NavbarPage from "./components/NavBar";
 import GroceryList from "./models/ProductModel";
+import { useStoreState } from "easy-peasy";
 import "./App.css";
 
-class App extends Component {
-  state = {
-    cart: [],
-    quantity: 1,
-    cartQuantity: 0
-  };
+const App = props => {
+  const [cartCount, setcartCount] = useState(0);
+  //const number = useStoreActions(actions => actions.CartModel.cartItems);
 
-  /* handleChange = e => {
+  const items = useStoreState(state => state.CartModel.items);
+
+  useEffect(() => {
+    setcartCount(
+      items.reduce((total, item) => {
+        return parseInt(total) + parseInt(item.quantity);
+      }, 0)
+    );
+  }, [items]);
+
+  return (
+    <Fragment>
+      <NavbarPage items={GroceryList} />
+      <h1 className="carth1">
+        My
+        <span>
+          <FontAwesomeIcon
+            icon={faCartPlus}
+            transform="shrink-5 down-3 "
+            color="#007bff"
+            size="2x"
+            className="icon"
+            style={{ marginBottom: "7px" }}
+          />
+          <strong className="fa-stack-1x">{cartCount}</strong>
+          Cart
+        </span>
+      </h1>
+      <Container>
+        <Row>
+          <Col xs="5">
+            <GroceryItems />
+          </Col>
+          <Col xs="4" className="cartitems">
+            <Cart />
+          </Col>
+        </Row>
+        <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
+      </Container>
+      <FooterPage />
+    </Fragment>
+  );
+};
+
+export default App;
+
+/* numberCartItems = () => {
+    const { cart } = this.state;
+    return cart.reduce((total, item) => {
+      return parseInt(total) + parseInt(item.quantity);
+    }, 0);
+  }; */
+
+/* handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
@@ -40,54 +91,6 @@ class App extends Component {
     }
     this.setState({ quantity: 1 });
   }; */
-
-  numberCartItems = () => {
-    const { cart } = this.state;
-    return cart.reduce((total, item) => {
-      return parseInt(total) + parseInt(item.quantity);
-    }, 0);
-  };
-
-  render() {
-    return (
-      <Fragment>
-        <NavbarPage items={GroceryList} />
-        <h1 className="carth1">
-          My
-          <span>
-            <FontAwesomeIcon
-              icon={faCartPlus}
-              transform="shrink-5 down-3 "
-              color="#007bff"
-              size="2x"
-              className="icon"
-              style={{ marginBottom: "7px" }}
-            />
-            <strong className="fa-stack-1x">{this.numberCartItems()}</strong>
-            Cart
-          </span>
-        </h1>
-        <Container>
-          <Row>
-            <Col xs="5">
-              <GroceryItems
-                addToCart={this.addItem}
-                handleChange={this.handleChange}
-              />
-            </Col>
-            <Col xs="4" className="cartitems">
-              <Cart />
-            </Col>
-          </Row>
-          <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
-        </Container>
-        <FooterPage />
-      </Fragment>
-    );
-  }
-}
-
-export default App;
 
 /* numberCartItems = () => {
     const { cart } = this.state;

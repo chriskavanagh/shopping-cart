@@ -1,6 +1,5 @@
 import React from "react";
 import Select from "./Select";
-//import GroceryList from "../models/ProductModel";
 import { Table } from "reactstrap";
 import { MDBBtn } from "mdbreact";
 import range from "lodash/range";
@@ -14,7 +13,7 @@ const GroceryItems = props => {
   const options = range(1, 6);
 
   // get add function from CartModel State (easy-peasy).
-  const add = useStoreActions(actions => actions.CartModel.add);
+  const add = useStoreActions(actions => actions.CartModel.addItem);
 
   // if search, filters the list, otherwise list all products.
   const groceryList = filteredList.length > 0 ? filteredList : groceries;

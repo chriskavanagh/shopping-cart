@@ -29,8 +29,6 @@ const Cart = () => {
     return total;
   };
 
-  //const { items } = this.props;
-
   return (
     <Card className="card">
       <CardBody className="cardBody">

@@ -21,18 +21,15 @@ const NavbarPage = ({ items }) => {
   );
 
   const toggleCollapse = () => {
-    //this.setState({ isOpen: !state.isOpen });
     setisOpen(!isOpen);
   };
 
   const handleChange = e => {
     const { value } = e.target;
-    //this.setState({ searchQuery: value });
     setsearchQuery(value);
   };
 
   const handleSearch = () => {
-    //const { searchQuery } = this.state;
     const filtered = GroceryList.filter(i => {
       return i.name.toLowerCase().startsWith(searchQuery.toLowerCase());
     });
@@ -42,7 +39,6 @@ const NavbarPage = ({ items }) => {
 
   useEffect(() => {
     addFilter(filtered);
-    //console.log(filtered);
   });
 
   return (

@@ -5,11 +5,7 @@ import { MDBBtn } from "mdbreact";
 import range from "lodash/range";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
-const GroceryItems = ({
-  paginate,
-  indexOfFirstProduct,
-  indexOfLastProduct
-}) => {
+const GroceryItems = ({ indexOfFirstProduct, indexOfLastProduct }) => {
   // options for Select Component, number of choices to buy.
   const options = range(1, 6);
 

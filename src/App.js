@@ -15,7 +15,7 @@ import "./App.css";
 
 const App = props => {
   const groceries = useStoreState(state => state.ProductModel.GroceryList);
-  // set state on items in cart
+  // set state on number of items in cart
   const [cartCount, setcartCount] = useState(0);
 
   // pagination

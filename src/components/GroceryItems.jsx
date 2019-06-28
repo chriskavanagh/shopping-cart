@@ -5,18 +5,29 @@ import { MDBBtn } from "mdbreact";
 import range from "lodash/range";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
-const GroceryItems = props => {
-  const groceries = useStoreState(state => state.ProductModel.GroceryList);
-  const filteredList = useStoreState(state => state.CartModel.filteredList);
-
+const GroceryItems = ({
+  paginate,
+  indexOfFirstProduct,
+  indexOfLastProduct
+}) => {
   // options for Select Component, number of choices to buy.
   const options = range(1, 6);
+
+  // grab state from models
+  const groceries = useStoreState(state => state.ProductModel.GroceryList);
+  const filteredList = useStoreState(state => state.CartModel.filteredList);
 
   // get add function from CartModel State (easy-peasy).
   const add = useStoreActions(actions => actions.CartModel.addItem);
 
   // if search, filters the list, otherwise list all products.
   const groceryList = filteredList.length > 0 ? filteredList : groceries;
+
+  // slice list for pagination
+  const filteredItems = groceryList.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   return (
     <div>
@@ -30,7 +41,7 @@ const GroceryItems = props => {
           </tr>
         </thead>
         <tbody>
-          {groceryList.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <tr key={index}>
               <td>
                 <MDBBtn

@@ -21,7 +21,15 @@ export const GroceryList = [
   { id: 4, name: "Ground Beef", price: 1.28, quantity: 1 },
   { id: 5, name: "Peanut Butter", price: 3.45, quantity: 1 },
   { id: 6, name: "Ketchup", price: 2.45, quantity: 1 },
-  { id: 7, name: "Mustard", price: 1.15, quantity: 1 }
+  { id: 7, name: "Mustard", price: 1.15, quantity: 1 },
+  { id: 8, name: "Mellons", price: 3.45, quantity: 1 },
+  { id: 9, name: "Detergent", price: 6.15, quantity: 1 },
+  { id: 10, name: "Crackers", price: 2.95, quantity: 1 },
+  { id: 11, name: "Bottled Water", price: 2.99, quantity: 1 },
+  { id: 12, name: "Candy", price: 1.1, quantity: 1 },
+  { id: 13, name: "Coca Cola", price: 4.99, quantity: 1 },
+  { id: 14, name: "Pepsi Cola", price: 4.99, quantity: 1 },
+  { id: 15, name: "Beef", price: 12.99, quantity: 1 }
 ];
 
 export default {

@@ -10,7 +10,7 @@ import {
   MDBFormInline
 } from "mdbreact";
 
-const NavbarPage = ({ items }) => {
+const NavbarPage = ({ items, paginate }) => {
   const { GroceryList } = items;
   const [isOpen, setisOpen] = useState(false);
   const [searchQuery, setsearchQuery] = useState("");
@@ -30,6 +30,10 @@ const NavbarPage = ({ items }) => {
   };
 
   const handleSearch = () => {
+    // reset current page to page 1 or won't show search result
+    paginate(1);
+
+    // filter items by searchquery
     const filtered = GroceryList.filter(i => {
       return i.name.toLowerCase().startsWith(searchQuery.toLowerCase());
     });

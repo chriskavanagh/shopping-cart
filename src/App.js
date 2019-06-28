@@ -82,6 +82,7 @@ const App = props => {
           productsPerPage={productsPerPage}
           totalProducts={groceries.length}
           paginate={paginate}
+          currentPage={currentPage}
         />
         <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
       </Container>

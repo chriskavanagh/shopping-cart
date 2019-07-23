@@ -18,17 +18,23 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumbers.push(i);
   }
+
+  const next = currentPage === pageNumbers.length ? null : true;
+  const prev = currentPage === 1 ? null : true;
+
   return (
     <MDBRow>
       <MDBCol>
         <MDBPagination circle color="blue" className="mb-5">
           <MDBPageItem>
-            <MDBPageNav
-              aria-label="Previous"
-              onClick={() => paginate(currentPage - 1)}
-            >
-              <span aria-hidden="true">Previous</span>
-            </MDBPageNav>
+            {prev && (
+              <MDBPageNav
+                aria-label="Previous"
+                onClick={() => paginate(currentPage - 1)}
+              >
+                <span aria-hidden="true">Previous</span>
+              </MDBPageNav>
+            )}
           </MDBPageItem>
           {pageNumbers.map(number => (
             <MDBPageItem
@@ -40,12 +46,14 @@ const Pagination = ({
             </MDBPageItem>
           ))}
           <MDBPageItem>
-            <MDBPageNav
-              aria-label="Previous"
-              onClick={() => paginate(currentPage + 1)}
-            >
-              <span aria-hidden="true">Next</span>
-            </MDBPageNav>
+            {next && (
+              <MDBPageNav
+                aria-label="Previous"
+                onClick={() => paginate(currentPage + 1)}
+              >
+                <span aria-hidden="true">Next</span>
+              </MDBPageNav>
+            )}
           </MDBPageItem>
         </MDBPagination>
       </MDBCol>

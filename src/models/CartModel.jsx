@@ -3,7 +3,7 @@ import { action } from "easy-peasy";
 export default {
   // . . . CART PRODUCTS . . .
   items: [],
-  quantity: 0,
+  quantity: 1,
   filteredList: [],
   cartCount: 0,
   // . . . ACTIONS . . .

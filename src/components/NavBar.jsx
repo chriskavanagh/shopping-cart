@@ -59,7 +59,7 @@ const NavbarPage = ({ items, paginate }) => {
               <div className="md-form my-0">
                 <input
                   className="form-control mr-sm-2"
-                  type="text"
+                  type="search"
                   placeholder="Search"
                   aria-label="Search"
                   value={searchQuery}

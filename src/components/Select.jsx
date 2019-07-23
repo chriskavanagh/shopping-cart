@@ -11,11 +11,13 @@ const Select = props => {
   });
   return (
     <FormGroup>
-      <Input
-        type="select"
+      <select
+        className="browser-default custom-select"
+        type="number"
         name="quantity"
         id="quantity"
         onChange={e => setQuantity(e.target.value)}
+        value={quantity}
       >
         {props.options.map(option => {
           return (
@@ -24,7 +26,7 @@ const Select = props => {
             </option>
           );
         })}
-      </Input>
+      </select>
     </FormGroup>
   );
 };
